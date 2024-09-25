@@ -1,31 +1,83 @@
 #include <SDL.h>
 #include "InputManager.h"
+#include "Game.h"
+#include <iostream>
 
-int main(int argc, char* argv[]) {
-    SDL_Init(SDL_INIT_VIDEO); // Initialize SDL2
-    SDL_Window* window = SDL_CreateWindow("SDL2 Input Example", 100, 100, 800, 600, SDL_WINDOW_SHOWN);
-    SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
-    InputManager inputManager;
+    Game::Game() {}
 
-    bool running = true;
-    while (running) {
-        inputManager.Update(); // Check for input each frame
+    Game::~Game() {}
 
-        if (inputManager.IsKeyPressed(SDLK_ESCAPE)) {
-            running = false; // Exit the game if escape is pressed
+    void Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen) {
+
+        int flags = 0;
+        if (fullscreen) {
+            flags = SDL_WINDOW_FULLSCREEN;
+        
         }
 
-        // Other game logic here...
+        if (SDL_Init(SDL_INIT_EVERYTHING) == 0) {
+            window = SDL_CreateWindow(title, xpos, ypos, width, height,flags);
+            if (window == nullptr) {
+                std::cout << "Window creation failed: " << SDL_GetError() << std::endl;
+                isRunning = false;
+                return;
+            }
+            renderer = SDL_CreateRenderer(window, -1, 0);
+            if (renderer== nullptr) {
+                std::cout << "Renderer creation failed: " << SDL_GetError() << std::endl;
+                SDL_DestroyWindow(window);
+                isRunning = false;
+                return;
+            }
+            SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+            isRunning = true;
 
-        SDL_RenderClear(renderer);
-        // Render game objects...
-        SDL_RenderPresent(renderer);
+        }
+        else {
+            std::cout << "SDL Initialization failed: " << SDL_GetError() << std::endl;
+            isRunning = false;
+        }
+    
+    
+    }
+    void Game::handleEvents() {
+        SDL_Event event;
+        while (SDL_PollEvent(&event)) {
+            switch (event.type) {
+            case SDL_QUIT:
+                isRunning = false;
+                break;
+            default:
+                break;
+
+            }
+        }
+    
     }
 
-    SDL_DestroyRenderer(renderer);
-    SDL_DestroyWindow(window);
-    SDL_Quit();
+    void Game::update() {}
 
-    return 0;
-}
+    void Game::render() {
+        SDL_RenderClear(renderer);
+        //Add stuff to render
+        SDL_RenderPresent(renderer);
+
+    
+    }
+
+    void Game::clean() {
+        if (renderer) {
+            SDL_DestroyRenderer(renderer);
+            renderer = nullptr;
+        }
+
+        if (window) {
+            SDL_DestroyWindow(window);
+            window = nullptr;
+        }
+        
+        
+        SDL_Quit();
+    }
+
