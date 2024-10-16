@@ -12,7 +12,7 @@ This project is a custom **2D Game Engine** designed to create games with a focu
   
 ---
 
-## Tech Demos
+## Tech Demos (Not Implemented yet but are planned)
 
 1. **Zelda-Inspired Demo**: A tech demo showcasing movement, collision detection, and animations based on a top-down perspective.
 2. **Sonic-Inspired Demo**: A second demo will highlight the engine's ability to handle platformer physics and side-scrolling environments.
