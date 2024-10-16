@@ -61,9 +61,6 @@ Once the game engine is up and running, you can:
 - **AI System**: Simple AI behavior for NPCs and enemies.
 - **Cross-Platform Support**: Expanding compatibility to more platforms such as mobile devices and consoles.
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
 ## Author
 
