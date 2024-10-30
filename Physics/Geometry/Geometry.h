@@ -6,6 +6,7 @@
 #include <iostream>
 #include <cmath>
 #include <vector>
+#include<dense>
 #include <string> //Include for std::string
 
 class Geometry {
@@ -15,7 +16,7 @@ public:
 	virtual ~Geometry() = default;
 
 	//Calculate the area of the shape
-	virtual float area() const = 0;
+	virtual float computeArea() const = 0;
 
 	//Calculate the perimeter of the shape
 	virtual float perimeter() const = 0;
@@ -24,10 +25,14 @@ public:
 	virtual std::string name()const = 0;
 
 	//Checks if a point is within the shape
-	bool contains(float x, float y) const;
+	virtual bool contains(float x, float y) const;
 
-	//Moves the shape
-	void translate(float dx, float dy);
+	//Transfrom the geotmetry using a matrix
+	virtual void transform(const Eigen::Matrix2f& matrix)=0;
+
+	virtual void draw() const = 0;
+	virtual Eigen::Vector2f getBoundingBoxMin() const = 0;
+	virtual Eigen::Vector2f getBoundingBoxMax() const = 0;
 };
 
 #endif // !GEOMETRY_H

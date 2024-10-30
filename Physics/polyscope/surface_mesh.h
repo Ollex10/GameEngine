@@ -14,7 +14,7 @@ public:
 	surface_mesh() = default;
 
 	//Adds a vertext to the mesh
-	void addVertex(const Eigen::Vector3f& vertex);
+	void addVertex(const Eigen::Vector2f& vertex);
 
 	//Adds a face to the mesh (defined by indices of vertices)
 	void addFace(const std::vector<int>& faceIndices);

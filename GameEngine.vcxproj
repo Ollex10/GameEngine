@@ -329,7 +329,9 @@
     <ClInclude Include="Physics\Collision\CollisionSolver.h" />
     <ClInclude Include="Physics\Contact.h" />
     <ClInclude Include="Physics\Entity.h" />
+    <ClInclude Include="Physics\Geometry\Circle.h" />
     <ClInclude Include="Physics\Geometry\Geometry.h" />
+    <ClInclude Include="Physics\Geometry\Rectangle.h" />
     <ClInclude Include="Physics\PhysicsEngine.h" />
     <ClInclude Include="Physics\polyscope\surface_mesh.h" />
     <ClInclude Include="Physics\RigidBody.h" />
@@ -343,7 +345,6 @@
     <ClInclude Include="src\Physics\RigidBody.h" />
     <ClInclude Include="src\Physics\polyscope\surface_mesh.h" />
   </ItemGroup>
-  
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>

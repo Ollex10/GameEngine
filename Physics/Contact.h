@@ -5,8 +5,7 @@
 
 #include  "Geometry/Geometry.h"
 #include "Dense"
-
-class RigidBody;
+#include "RigidBody.h"
 
 class Contact {
 
@@ -22,9 +21,12 @@ public:
 
 
 	//Getters for contact information
-	const Eigen::Vector3f& getContactPoint() const;
-	const Eigen::Vector3f& getNormal() const;
+	const Eigen::Vector2f& getContactPoint() const;
+	const Eigen::Vector2f& getNormal() const;
+	RigidBody* getBodyA() const;
+	RigidBody* getBodyB() const;
 	float getPenetrationDepth() const;
+	float getRestitution() const;
 
 private: 
 

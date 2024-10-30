@@ -5,7 +5,7 @@
 
 
 #include <Dense>
-class Entity;
+#include "../RigidBody.h"
 
 struct CollisionInfo {
 	Eigen::Vector2f contactPoint;
@@ -21,22 +21,22 @@ struct CollisionInfo {
 class CollisionDetector {
 public:
 	//Checks if two entities are colliding and returning collsion data
-	CollisionInfo checkCollision(const Entity& entityA, const Entity& entityB);
+	CollisionInfo checkCollision(const RigidBody& bodyA, const RigidBody& bodyB);
 
 	//Resloves the collision bsaed on collision data
-	void resolveCollsion(Entity& entityA, Entity& entityB);
+	void resolveCollsion(RigidBody& bodyA, RigidBody& bodyB);
 
 
 private:
 
 	//Helper function to calculate contact point
-	Eigen::Vector2f calculateContactPoint(const Entity& entityA, Entity& entityB);
+	Eigen::Vector2f calculateContactPoint(const RigidBody& bodyA, RigidBody& bodyB);
 
 	//Helper funciton to calculate collision normal
-	Eigen::Vector2f calculateNormal(const Entity& entityA, const Entity& entityB);
+	Eigen::Vector2f calculateNormal(const RigidBody& bodyA, const RigidBody& bodyB);
 
 	//Helper function to calculate penetration depth
-	float calculatePenetrationDepth(const Entity& entityA, const Entity& entityB);
+	float calculatePenetrationDepth(const RigidBody& bodyA, const RigidBody& bodyB);
 };
 
 

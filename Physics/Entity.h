@@ -31,7 +31,7 @@ struct BodyDefine {
 		allowSleep = true;
 		fixedRotation = false;
 		bullet = false;
-		type = staticBody;
+		type = BodyType::staticBody;
 		isActive = true;
 		gravityScale = 1.0f;
 	}
